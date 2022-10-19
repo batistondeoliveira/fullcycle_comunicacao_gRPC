@@ -1,0 +1,9 @@
+protoc --proto_path=proto proto/*.proto --go_out=pb => Cria user.pb.go
+protoc --proto_path=protp proto/*.proto --go_out=pb --go-grpc_out=pb => Cria user_grpc.pb.go
+protoc --proto_path=proto/ proto/*.proto --plugin=$(go env GOPATH)/bin/protoc-gen-go-grpc --go-grpc_out=pb --go_out=pb
+
+go get github.com/ktr0731/evans
+go install github.com/ktr0731/evans
+evans -r repl --host localhost --port 50051 => Cria os 2 arquivos ao mesmo tempo (Comando novo)
+service <nome_service> - exemplo: service UserService
+call <nome_funcao> - exemplo: call AddUser
